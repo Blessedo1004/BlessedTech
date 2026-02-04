@@ -88,6 +88,9 @@ h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
+textarea{
+  resize: none;
+}
 
 /* PHP Email Form Messages
 ------------------------------*/
