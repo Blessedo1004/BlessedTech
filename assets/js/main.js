@@ -237,3 +237,42 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+//form messages display
+const form = document.querySelector('form');
+const errorMessage = document.querySelector('.error-message');
+const sentMessage = document.querySelector('.sent-message');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  try {
+    const response = await fetch('https://formspree.io/f/maqbrvnk', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      sentMessage.style.display = 'block';
+      setTimeout(() => {
+          sentMessage.style.display = 'none';
+    }, 2000)
+      form.reset();
+    } 
+    else {
+      errorMessage.style.display = 'block';
+      errorMessage.textContent = 'An error occurred while sending your message. Please try again after some time.';
+       setTimeout(() => {
+          errorMessage.style.display = 'none';
+    }, 2000)
+    }
+  } catch (error) {
+    errorMessage.style.display = 'block';
+      setTimeout(() => {
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = error;
+      }, 2000)
+  }
+});
+
+
