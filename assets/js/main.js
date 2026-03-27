@@ -268,9 +268,9 @@ form.addEventListener('submit', async (e) => {
     }
   } catch (error) {
     errorMessage.style.display = 'block';
+    errorMessage.textContent = error;
       setTimeout(() => {
             errorMessage.style.display = 'none';
-            errorMessage.textContent = error;
       }, 2000)
   }
 });
