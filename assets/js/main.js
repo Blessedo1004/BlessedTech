@@ -247,7 +247,7 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
   try {
-    const response = await fetch('https://formspree.io/f/maqbrvnk', {
+    const response = await fetch('https://api.staticforms.dev/submit', {
       method: 'POST',
       body: formData,
       headers: { 'Accept': 'application/json' }
